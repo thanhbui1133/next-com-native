@@ -53,10 +53,6 @@ export default function Home() {
             Data received = &nbsp;
             <code className={styles.code}>{receivedData}</code>
           </p>
-          <p>
-            Window received = &nbsp;
-            <code className={styles.code}></code>
-          </p>
         </div>
       </main>
     </>
