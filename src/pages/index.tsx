@@ -9,10 +9,12 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [receivedData, setReceivedData] = useState("");
   useEffect(() => {
-    if ((window as any)?.ReactNativeWebView) {
-      // ensure window.ReactNativeWebView is there, otherwise, web app might crash if is not there
-      (window as any).ReactNativeWebView.postMessage("Wayne is coming again");
+    if ((window as any).ReactNativeWebView) {
+      (window as any).ReactNativeWebView.postMessage(
+        JSON.stringify({ message: "WEB_READY", data: "Wayne is comming" })
+      );
     }
+
     window.parent.postMessage(
       {
         message: "WEB_READY",
@@ -25,7 +27,6 @@ export default function Home() {
   useEffect(() => {
     const messageCatchEvent = (event: { data: any }) => {
       const messageData = event.data;
-      setReceivedData(messageData);
       if (messageData.message === "NATIVE_APP") {
         setReceivedData(messageData.data);
         // alert(messageData.data);
