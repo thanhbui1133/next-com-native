@@ -9,6 +9,10 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [receivedData, setReceivedData] = useState("");
   useEffect(() => {
+    if ((window as any)?.ReactNativeWebView) {
+      // ensure window.ReactNativeWebView is there, otherwise, web app might crash if is not there
+      (window as any).ReactNativeWebView.postMessage("Wayne is coming again");
+    }
     window.parent.postMessage(
       {
         message: "WEB_READY",
@@ -50,7 +54,7 @@ export default function Home() {
           </p>
           <p>
             Window received = &nbsp;
-            <code className={styles.code}>{(window as any).xyz}</code>
+            <code className={styles.code}></code>
           </p>
         </div>
       </main>
