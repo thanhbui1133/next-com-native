@@ -21,6 +21,7 @@ export default function Home() {
   useEffect(() => {
     const messageCatchEvent = (event: { data: any }) => {
       const messageData = event.data;
+      setReceivedData(messageData);
       if (messageData.message === "NATIVE_APP") {
         setReceivedData(messageData.data);
         // alert(messageData.data);
