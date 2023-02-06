@@ -26,6 +26,7 @@ export default function Home() {
   // MESSAGE EVENT CATCHING
   useEffect(() => {
     const messageCatchEvent = (event: { data: any }) => {
+      alert("Catch data");
       const messageData = event.data;
       const messageString = JSON.stringify(messageData);
       setReceivedData(messageString);
