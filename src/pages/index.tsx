@@ -27,10 +27,12 @@ export default function Home() {
   useEffect(() => {
     const messageCatchEvent = (event: { data: any }) => {
       const messageData = event.data;
-      if (messageData.message === "NATIVE_APP") {
-        setReceivedData(messageData.data);
-        // alert(messageData.data);
-      }
+      const messageString = JSON.stringify(messageData);
+      setReceivedData(messageString);
+      // if (messageData.message === "NATIVE_APP") {
+      //   setReceivedData(messageData.data);
+      //   // alert(messageData.data);
+      // }
     };
     window.addEventListener("message", messageCatchEvent);
 
